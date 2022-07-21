@@ -795,7 +795,7 @@ import Xparser
 
 class MyX(Xparser.X):
     def printmsg(self):
-        print "Hello!"
+        print("Hello!")
 \end{verbatim}
 
 \mysubsection{Customizing Scanners}
@@ -924,7 +924,7 @@ portion of the input matched by the current rule.  To do this, just save the sca
       {{ start = self._scanner.pos }}
       a b c 
       {{ end = self._scanner.pos }}
-      {{ print 'Text is', self._scanner.input[start:end] }}
+      {{ print('Text is', self._scanner.input[start:end]) }}
 \end{verbatim}
 
 \mysubsection{Pre- and Post-Parser Code}

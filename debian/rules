@@ -1,0 +1,20 @@
+#!/usr/bin/make -f
+
+export PYBUILD_NAME=yapps
+
+%:
+	dh $@ --with python3 --buildsystem=pybuild
+
+override_dh_auto_build:
+	dh_auto_build
+	cd doc && hevea yapps2.tex
+	cd doc && hevea yapps2.tex # twice because of TOC
+
+override_dh_install:
+	mkdir -p debian/yapps2/usr/bin
+	mv debian/python3-yapps/usr/bin/yapps2 debian/yapps2/usr/bin
+	dh_install
+
+override_dh_auto_test:
+	sh -x test.sh
+

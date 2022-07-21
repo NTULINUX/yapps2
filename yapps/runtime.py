@@ -175,7 +175,7 @@ class Scanner(object):
         file,line,p = pos
         if file != self.filename:
             if self.stack: return self.stack.print_line_with_pointer(pos,length=length,out=out)
-            print >>out, "(%s: not in input buffer)" % file
+            print("(%s: not in input buffer)" % file, file=out)
             return
 
         text = self.input
@@ -198,7 +198,7 @@ class Scanner(object):
                     break
                 spos = cr+1
         else:
-            print >>out, "(%s:%d not in input buffer)" % (file,origline)
+            print("(%s:%d not in input buffer)" % (file,origline), file=out)
             return
 
         # Now try printing part of the line
@@ -227,8 +227,8 @@ class Scanner(object):
             p = p - 7
 
         # Now print the string, along with an indicator
-        print >>out, '> ',text
-        print >>out, '> ',' '*p + '^'
+        print('> ',text, file=out)
+        print('> ',' '*p + '^', file=out)
 
     def grab_input(self):
         """Get more input if possible."""
@@ -316,7 +316,7 @@ class Scanner(object):
                     del self.tokens[0]
                 self.tokens.append(tok)
                 self.last_read_token = tok
-                # print repr(tok)
+                # print(repr(tok))
                 return tok
             else:
                 ignore = self.ignore[best_pat]
